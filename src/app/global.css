@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .clipped {
+    clip-path: ellipse(150% 100% at top);
+  }
+
+  .gradient-masked {
+    -webkit-mask: linear-gradient(
+      to top,
+      white 0%,
+      rgba(256, 256, 256, 0.75) 50%,
+      rgba(256, 256, 256, 0.5) 75%,
+      rgba(256, 256, 256, 0.25) 100%
+    );
+    mask: linear-gradient(
+      to top,
+      white 0%,
+      rgba(256, 256, 256, 0.75) 50%,
+      rgba(256, 256, 256, 0.5) 75%,
+      rgba(256, 256, 256, 0.25) 100%
+    );
+    inset: -20px 0 0 0;
+  }
+
+  .pointer-all {
+    pointer-events: all;
+  }
+
+  .numbered {
+    counter-reset: item;
+  }
+
+  .numbered > li {
+    counter-increment: item;
+  }
+
+  .numbered > li > div::before {
+    content: counters(item, ".") ". ";
+    margin-right: 0.2em;
+  }
+
+  .numbered > li > ol {
+    counter-reset: sub;
+  }
+
+  .numbered > li > ol > li {
+    counter-increment: sub;
+  }
+
+  .numbered > li > ol > li::before {
+    content: counters(item, ". ") "." counters(sub, ".") " ";
+    font-weight: 600;
+    margin-right: 0.2em;
+  }
+}
